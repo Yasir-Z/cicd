@@ -1,0 +1,19 @@
+name: gh-runner
+
+on:
+  push:
+    branches: 
+      - main
+
+jobs:
+  ubuntu-runner:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code 
+        uses: actions/checkout@v4
+      - name: print os
+        run: echo "The os is ':' $RUNNER_OS"
+      - name: The runner's hostname
+        run: echo "The runner's hostname ':' $HOSTNAME"
+      - name: print user name
+        run: echo "The user is ':' ${{ github.actor }}"

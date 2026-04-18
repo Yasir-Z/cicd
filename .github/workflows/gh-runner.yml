@@ -24,7 +24,7 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v4
       - name: print os
-        run: echo "The os is ':'  ${{ runner.os }}""
+        run: echo "The os is ':'  ${{ runner.os }}"
       - name: The runner's hostname
         run: echo "The runner's hostname ':' hostname"
       - name: print user name

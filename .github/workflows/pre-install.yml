@@ -1,0 +1,21 @@
+name: pre-istalled-sw
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  pre-isntall-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkoutv@4
+      - name: Docker version
+        run: docker --version
+      - name: python version
+        run: python --version
+      - name: Node version
+        run: nodejs -v
+      - name: git version 
+        run: git --version

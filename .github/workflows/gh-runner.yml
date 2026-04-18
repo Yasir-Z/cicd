@@ -30,7 +30,7 @@ jobs:
       - name: print user name
         run: echo "The user is ':' ${{ github.actor }}"
 
-  windows-runner:
+  macOS-runner:
     runs-on: macos-latest
     steps:
       - name: checkout code

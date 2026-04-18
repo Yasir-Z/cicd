@@ -26,6 +26,6 @@ jobs:
       - name: print os
         run: echo "The os is ':'  ${{ runner.os }}"
       - name: The runner's hostname
-        run: echo "The runner's hostname ':' hostname"
+        run: echo "The runner's hostname ':' $(hostname)"
       - name: print user name
         run: echo "The user is ':' ${{ github.actor }}"

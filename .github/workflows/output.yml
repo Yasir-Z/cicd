@@ -24,4 +24,4 @@ jobs:
       print-date
     steps:
       - name: read output
-        run: echo "Today's date is ${{ steps.set-date.outputs.today }}"
+        run: echo "Today's date is ${{ needs.set-date.outputs.today }}"

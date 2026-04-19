@@ -1,0 +1,31 @@
+name: smart-pipeline
+
+on: [push]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: runt lint job
+        run: echo "Linting..."
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: run test job
+        run: echo "Testing ..."
+
+  summary:
+    needs: [lint, test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: summary 
+        if: github.ref == 'refs/heads/main'
+        run: echo "The branch is main"
+        else:
+          run: echo "The branch is feture"
+
+      - name: print commit message
+        run: echo "commit message is':' ${{ github.event.head_commit.message }}"
+
+

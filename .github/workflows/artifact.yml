@@ -28,9 +28,5 @@ jobs:
         with:
           name: build-log
       - name: print file
-        run: cat build-file
-
-
-
-
+        run: cat build.file
 

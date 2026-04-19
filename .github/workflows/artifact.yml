@@ -16,17 +16,19 @@ jobs:
       - name: save artifact
         uses: actions/upload-artifact@v4
         with:
-          name: build.log
-          path: build-log
+          name: build-log
+          path: build.log
 
   use-aritfact:
+    needs: build-file
     runs-on: ubuntu-latest
     steps:
       - name: print artifact
         uses: actions/download-artifact@v4
         with:
-          name: build.log
-          run: cat build-log
+          name: build-log
+      - name: print file
+        run: cat build-file
 
 
 

@@ -1,0 +1,13 @@
+name: outputs
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  print-date:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print today's date
+        run: echo "today's date is $(date)"

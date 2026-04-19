@@ -1,0 +1,21 @@
+name: artifact
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create-file:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: write file
+        run: |
+          echo "Build started at $(date)" > build.log
+          echo "Environment: ${{ runner.os }}" >> build.log
+
+      - name: save artifact
+        uses: actions/upload-artifact

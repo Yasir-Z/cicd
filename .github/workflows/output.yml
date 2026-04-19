@@ -5,9 +5,21 @@ on:
     branches:
       - main
 
+
 jobs:
   print-date:
     runs-on: ubuntu-latest
+
+    outputs:
+      today: ${{ steps.set-date.outputs.today }}
+
     steps:
-      - name: print today's date
-        run: echo "today's date is $(date)"
+      - name: set today's date
+        id: set-date
+        run: echo "today=$(date)" >> $GITHUB_OUTPUT
+
+  read-output:
+    runs-on: ubuntu-latest
+    steps:
+      - name: read output
+        run: echo "Today's date is ${{ steps.set-date.outputs.today }}"

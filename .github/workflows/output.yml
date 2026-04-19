@@ -24,4 +24,21 @@ jobs:
       print-date
     steps:
       - name: read output
+        if: github.ref == 'refs/heads/main'
         run: echo "Today's date is ${{ needs.print-date.outputs.today }}"
+
+      - name: run if previous step failed
+        if: failure()
+        run: echo "Output is faild"
+
+      - name: run if previous step failed
+        continue-on-error: true
+        run: echo "Continue even failed"
+
+
+
+
+
+
+
+

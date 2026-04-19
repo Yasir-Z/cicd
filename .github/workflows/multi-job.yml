@@ -1,0 +1,31 @@
+name: multi-job
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: build the code
+        run: echo "The code is built"
+      
+  test:
+    needs:
+      build
+    runs-on: ubuntu-latest
+    steps:
+      - name: test the code
+        run: echo "Test the the code"
+  
+  deploy:
+    needs:
+      test
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy the app
+    run: echo "Deploying"
+
+

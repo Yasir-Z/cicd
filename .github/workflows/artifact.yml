@@ -6,19 +6,29 @@ on:
       - main
 
 jobs:
-  create-file:
+  build-file:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout code
-        uses: actions/checkout@v4
-
-      - name: write file
+      - name: create the file 
         run: |
           echo "Build started at $(date)" > build.log
-          echo "Environment: ${{ runner.os }}" >> build.log
-
+      
       - name: save artifact
         uses: actions/upload-artifact@v4
         with:
-          name: build-log
-          path: build.log
+          name: build.log
+          path: build-log
+
+  use-aritfact:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build.log
+          run: cat build-log
+
+
+
+
+

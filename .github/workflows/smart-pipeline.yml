@@ -19,11 +19,13 @@ jobs:
     needs: [lint, test]
     runs-on: ubuntu-latest
     steps:
-      - name: summary 
+      - name: summary if main branch
         if: github.ref == 'refs/heads/main'
         run: echo "The branch is main"
-        else:
-          run: echo "The branch is feture"
+
+      - name: summary if other branch
+        if: github.ref != 'refs/heads/feature'
+        run: echo "The branch is main"
 
       - name: print commit message
         run: echo "commit message is':' ${{ github.event.head_commit.message }}"
